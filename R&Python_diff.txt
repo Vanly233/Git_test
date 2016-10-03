@@ -1,0 +1,4 @@
+The difference of same functions between R and Python:
+1.
+R:	str(object) #显示某个对象的结构，str=structure
+Python: str(args) #将args格式化为字符串，str=string
