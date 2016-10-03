@@ -2,3 +2,9 @@ The difference of same functions between R and Python:
 1.
 R:	str(object) #显示某个对象的结构，str=structure
 Python: str(args) #将args格式化为字符串，str=string
+2.
+R：选取各种数据结构中的元素，R用的是方括号“[]”
+Python：Python用的是“()”
+3.
+R：选取列表List中的元素。在双重方括号中指明代表某个成分的数字或名称来访问列表中的元素，“[[2]]”表明选取list中的第二个元素
+Python：选取列表中的元素只能用数值下标索引：0、1、2、3，......，“(2)”表明选取list中的第三个元素（从0开始记起）
