@@ -12,8 +12,7 @@ file.rename(from,to) ##Change the name of the file from A to B.
 file.copy(from,to) ##copy file
 
 file.path() 
-##Construct the path to a file from components 
-##in a platform-independent way.
+##Construct the path to a file from components in a platform-independent way.
 ##file.path("folder2","folder3) ##the  result of the  function is "folder2/floder3"
 
 dir.create(file.path("testdir2","testdir3"),recursive=TRUE) 
@@ -22,4 +21,9 @@ dir.create(file.path("testdir2","testdir3"),recursive=TRUE)
 
 unlink(...,recursive=TRUE) ##delete a directory and all subdirectories¡¢files in it
 ## the name of delete operation comes from unix.
+
+
+identical() 
+##The safe and reliable way to test two objects for being exactly equal. 
+##It returns TRUE in this case, FALSE in every other case.
 
