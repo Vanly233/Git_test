@@ -22,8 +22,153 @@ dir.create(file.path("testdir2","testdir3"),recursive=TRUE)
 unlink(...,recursive=TRUE) ##delete a directory and all subdirectories¡¢files in it
 ## the name of delete operation comes from unix.
 
+paste(...,sep=" ",collapse=NULL)
+##
+
+%[whatever]%
+##user-defined binary operators
+##where [whatever] represents any valid variable name.
+##example:
+# "%mult_add_one%" <- function(left, right){ # Notice the quotation marks!
+#	left * right + 1}
+# 4 %mult_add_one% 5 #return 21 
+
 
 identical() 
 ##The safe and reliable way to test two objects for being exactly equal. 
 ##It returns TRUE in this case, FALSE in every other case.
 
+which()
+##which() function takes a logical vector as an argument and 
+##returns the indices of the vector that are TRUE.
+##which(c(TRUE, FALSE, TRUE)) would return the vector c(1, 3).
+
+any()
+##return TRUE if one or more of the elements in the logical vector is TRUE
+
+all()
+##return TRUE if every element in the logical vector is TRUE
+
+sd(x,na.rm=FALSE)
+##This function computes the standard deviation of the values in x. 
+##If na.rm is TRUE then missing values are removed before computation proceeds
+
+4.R's apply family
+unique()
+##return a vector of the unique elements with all duplicate elements removed
+##i.e unique(c(3,4,5,5,5,6,6)) returns c(3,4,5,6)
+
+lapply(data,function)
+##apply function to every column of data
+##return a list.
+## "l"  of "lapply" represents  list.
+
+sapply(data,function)
+##simplify the result given by lapply.
+##returns vector or matrix.if not successfully transformed,then it returns a list.
+
+replicate(n,expression)
+#repeated evaluation of an expression 
+| (which will usually involve random number generation).
+
+vapply(data,function,type_of_result)
+##vapply() allows you to specify the format of the result explicitly. 
+##If the result doesn't match the format you specify,
+##vapply() will throw an error, causing the operation to stop
+##i.e vapply(data,class,character(1)),whch means return a character vecter of length 1
+
+tapply(data,groups,function)
+##tapply() is going to split your data into groups based on
+##the value of some variable, then apply a function to each group.
+###i.e tapply(flags$animate,flags$landmass,mean) 
+###apply the mean function to the 'animate' variable separately for each of the six landmass groups
+
+5.looking at data
+##let's have a look at dataset's shape and size ,proceeding by the following steps
+
+class()
+#check the class of R_object
+#so we can get a clue as to the overall structure of the data
+
+dim()
+#return two dimensions(rows and columns)
+
+nrow()
+#check the number of rows
+
+ncol()
+#check the number of cols
+
+object.size(R_object)
+#Provides an estimate of the memory that is being used to store an R object
+
+##let's peek at the inside of dataset
+
+names()
+##return each name of variables in dataset
+
+head(x,n=6)
+##return the top 6 rows of dataset,you can indicate the number of returned rows.
+
+tail(x,n=6)
+#return the last 6 rows of dataset,you can indicate the number of returned rows.
+
+summary()
+#provides different output for each variable, depending on its class.
+#For numeric data,it gives common statistical variables
+##For factor variables,it displays the number of times each level occurs in the data.
+##sometimes,you can see R truncates the summary of certain variable by including a category called 'other'.
+##but you can see how many times each level actually occurs in the data with calling function table(data$variable)
+#summary() can display the number of NAs in each variables' observations.
+
+str()
+#function str() is more useful and concise for understanding the structure of your data
+##The beauty of str() is that it combines many of the features of the
+##other functions you've already seen, all in a concise and readable format.
+
+
+6.simulation
+
+sample(x,size,replace=FALSE,prob=NULL)
+#sample takes a sample of the specified size from the elements of x 
+| using either with or without replacement.
+#When the 'size' argument
+| to sample() is not specified, R takes
+| a sample equal in size to the vector
+| from which you are sampling.
+#you can assign specified probability to each possible result in x.
+  
+LETTERS
+#LETTERS is a predefined variable in R 
+| containing a vector of all capital 26 letters of the English alphabet.
+
+letters
+#letters is a predefined variable in R
+| containing a vector of all lower case 26 letters of the English alphabet¡£
+
+rbinom(n,size,prob)
+#return the number of 'successes'.Generates n random numbers from binomial distribution.
+#n represents the number of observations,size represents the number of trials.
+#A binomial random variable represents
+| the number of 'successes' (heads) in a given number of independent 'trials' (coin flips).
+#Note that you only specify the probability of 'success' (heads) and
+| NOT the probability of 'failure' (tails).
+#i.e rbinom(100,size=1,prob=0.7)
+|if we want to see all of the 0s and 1s (in coin-fliping trials ),
+| we can request 100 observations, each of size 1, with success probability of 0.7.
+
+rnorm(n,mean=0,sd=1)
+
+rpois(n,lamda)
+
+rexp()
+#exponential distribution
+
+rchisq()
+#chi-squared distribution
+
+rgamma()
+#gamma distribution
+
+colMeans(x,na.rm=FAlSE)
+#return means of each column in numeric arrays or data frame.
