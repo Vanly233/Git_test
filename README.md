@@ -1,2 +1,2 @@
-# Git_test
-This is just a test folder
+# R_learning
+I will upload some notes about R learning to here.
