@@ -1,0 +1,56 @@
+---
+title: "R 测试题"
+author: "胡帆"
+date: "2017年3月7日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 向量运算
+
+- 测试：计算在 y 向量中数字 1 连续出现 2 次的位置
+```{r}
+y <- c(1,0,0,1,1,1,0,1,1)
+which(y[-1]+y[-length(y)]==2)
+```
+
+## 数据结构
+
+- 测试：计算每天最低气温和最高气温的差值
+```{r}
+raw <- read.delim("DataAnalysis-master/data/weather.txt",check.names=F,na.strings=".")
+#View(raw)
+head(raw)
+tidy <- melt(raw,id=c("year","month","element"),na.rm=TRUE,variable.name = "day")
+#View(tidy)
+head(tidy)
+new.tidy <- tidy[c("year","month","day","element","value")]
+#View(new.tidy)
+head(new.tidy)
+tidydata <- dcast(new.tidy,year+month+day~element)
+#View(tidydata)
+tidydata$diff <- tidydata$tmax-tidydata$tmin
+#View(tidydata)
+head(tidydata)
+```
+
+## 分组处理
+
+- 测试：计算每个航空公司（UniqueCarrie）每个月到达延误时间（ArrDelay）的十分位数（quantile）的均值
+
+```{r}
+#install.packages("hflights")
+library(hflights)
+str(hflights)
+#View(hflights)
+head(hflights)
+#install.packages("dplyr")
+library(plyr)
+mean.ArrDelay <- ddply(hflights,c("UniqueCarrier","Month"),summarize,quantile_mean=mean(quantile(ArrDelay,0.1,na.rm=TRUE)))
+#View(mean.ArrDelay)
+head(mean.ArrDelay,12)
+```
+
