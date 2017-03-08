@@ -11,10 +11,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 向量运算
 
-- 测试：计算在 y 向量中数字 1 连续出现 2 次的位置
+- 测试：计算在 y 向量中数字 1 连续出现 l次的位置
 ```{r}
 y <- c(1,0,0,1,1,1,0,1,1)
-which(y[-1]+y[-length(y)]==2)
+findNum <- function(y,l){
+        index <- which(y==1)
+        n <- length(index)
+        vec=c()
+        for(i in 1:n){
+                start.num=index[i]
+                slice=index[i:n]
+          sequence=seq(from=start.num,along.with = slice)
+        len=sum(slice==sequence)
+        if(len>=l){
+                vec=c(vec,start.num)
+        }
+        }
+        return(vec)
+}
+findNum(y,2)
+# 我这里构造的函数更灵活，可以增加一个参数num，找出num在向量y内连续出现l次的位置。
 ```
 
 ## 数据结构
